@@ -23,12 +23,13 @@
 <p>{{ $message }}</p>
 </div>
 @endif
-<table class="table table-bordered">
+  <table class="table table-striped">
 <tr>
 
 <th>Name</th>
 <th>Description</th>
 <th>Grit Estimate</th>
+<th width="280px">Action</th>
 </tr>
 @foreach ($whetstones as $whetstone)
 <tr>

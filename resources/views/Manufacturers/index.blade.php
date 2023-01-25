@@ -5,6 +5,9 @@
 <meta charset="UTF-8">
 <title>brands</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" >
+<link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+<!--<link href="{{asset('css/styles.css')}}" rel="stylesheet" />-->
+<script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"> </script>
 </head>
 <body>
 <div class="container mt-2">
@@ -23,7 +26,7 @@
 <p>{{ $message }}</p>
 </div>
 @endif
-<table class="table table-bordered">
+  <table class="table table-striped">
 <tr>
 
 <th>Name</th>

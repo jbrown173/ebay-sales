@@ -23,7 +23,7 @@
 <p>{{ $message }}</p>
 </div>
 @endif
-<table class="table table-bordered">
+  <table class="table table-striped">
 <tr>
 
 <th>Ebay Num</th>
@@ -47,6 +47,7 @@
 @csrf
 @method('DELETE')
 <button type="submit" class="btn btn-danger">Delete</button>
+<a class="btn btn-secondary" target="_blank" href="{{ route('razors.index',$ebaylisting->razorId)}}">Open Razor</a>
 </form>
 </td>
 </tr>
