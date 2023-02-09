@@ -185,10 +185,10 @@
                 </div>
 				<div class="col-xs-12 col-sm-12 col-md-12">
 					<div class="form-group">
-						<strong>Image File:</strong>
-						<input type="text" name="imagePath" value="{{ $razor->imagePath }}" class="form-control"
-						placeholder="imagePath">
-						@error('imagePath')
+						<strong>Image ID:</strong>
+						<input type="text" name="imageId" value="{{ $razor->imageId }}" class="form-control"
+						placeholder="imageId" id="imageId">
+						@error('imageId')
 						<div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
 						@enderror
 					</div>				
@@ -196,7 +196,7 @@
                 <button type="submit" class="btn btn-primary ml-3">Submit</button>
             </div>
         </form>
-		@include('Razors/upload')
+		@include('ImageUploads/index')
     </div>
 </body>
 

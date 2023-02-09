@@ -46,8 +46,8 @@ class RazorsCRUDController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'brandId' => 'required',
-            'manufacturerId' => 'required',
+            'brandId' => 'int',
+            'manufacturerId' => 'int',
             'tangTextFront' => 'required',
             'tangTextBack' => 'required',
             'bladeTextFront' => 'required',
@@ -59,7 +59,8 @@ class RazorsCRUDController extends Controller
             'bladeDescription' => 'required',
             'conditionWhenBought' => 'required',
             'knownCountryMadeIn' => 'required',
-            'guessedCountryMadeIn' => 'required'
+            'guessedCountryMadeIn' => 'string',
+            'imageId' => 'int'
         ]);
         $razor = new Razors;
         $razor->brandId = $request->brandId;
