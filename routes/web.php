@@ -9,6 +9,7 @@ use App\Http\Controllers\WhetstonesCRUDController;
 use App\Http\Controllers\WorkdoneCRUDController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\AdminAuthController;
+use App\Http\Controllers\DraftListingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,14 @@ Route::resource('ebaylistings', EbaylistingsCRUDController::class);
 Route::resource('manufacturers', ManufacturersCRUDController::class);
 Route::resource('whetstones', WhetstonesCRUDController::class);
 Route::resource('workdone', WorkdoneCRUDController::class);
-
+Route::resource('draftlisting', DraftListingController::class);
+//Route::post('razors/upload/', [ 'as' => 'razors.upload', 'uses' => [RazorsCRUDController::class, 'upload']]);
+//Route::post('razors/upload', array('as' => 'razors.upload', 'uses' => 'RazorsCRUDController@upload'));
+//Route::post('razors/upload', 'App\Http\Controllers\RazorsCRUDController@upload');
+//Route::post('razors/upload', 'RazorsCRUDController@upload')->name('razors.upload');
+Route::controller(RazorsCRUDController::class)->group(function ()
+{
+	Route::get('razors/index', 'index')->name('razors.index');
+	Route::post('razors/upload', 'upload')->name('razors.upload');
+	Route::delete('razors/destroy', 'destroy')->name('razors.destroy');
+});

@@ -47,12 +47,13 @@
 @csrf
 @method('DELETE')
 <button type="submit" class="btn btn-danger">Delete</button>
-<a class="btn btn-secondary" target="_blank" href="{{ route('razors.index',$ebaylisting->razorId)}}">Open Razor</a>
+<a class="btn btn-secondary" target="_blank" href="{{ route('razors.edit',$ebaylisting->razorId)}}">Open Razor</a>
 </form>
 </td>
 </tr>
 @endforeach
 </table>
 {{-- {!! $ebaylistings->links() !!} --}}
+<!--@include('footer')-->
 </body>
 </html>

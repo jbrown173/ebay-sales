@@ -5,6 +5,7 @@ use App\Models\manufacturers;
 use App\Models\Razors;
 use App\Models\brands;
 use Illuminate\Http\Request;
+use App\Models\File;
 
 class RazorsCRUDController extends Controller
 {
@@ -75,6 +76,7 @@ class RazorsCRUDController extends Controller
         $razor->conditionWhenBought = $request->conditionWhenBought;
         $razor->knownCountryMadeIn = $request->knownCountryMadeIn;
         $razor->guessedCountryMadeIn = $request->guessedCountryMadeIn;
+		$razor->imageId = $request->imageId;
         $razor->save();
         return redirect()->route('razors.index')
             ->with('success', 'Razor record has been created successfully.');
@@ -111,20 +113,21 @@ class RazorsCRUDController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'brandId' => 'required',
-            'manufacturerId' => 'required',
-            'tangTextFront' => 'required',
-            'tangTextBack' => 'required',
-            'bladeTextFront' => 'required',
-            'earliestYear' => 'required',
-            'latestYear' => 'required',
-            'scaleMaterialId' => 'required',
-            'scaleText' => 'required',
-            'scaleDescription' => 'required',
-            'bladeDescription' => 'required',
-            'conditionWhenBought' => 'required',
-            'knownCountryMadeIn' => 'required',
-            'guessedCountryMadeIn' => 'required'
+            'brandId' => 'int',
+            'manufacturerId' => 'int',
+            'tangTextFront' => 'string',
+            'tangTextBack' => 'string',
+            'bladeTextFront' => 'string',
+			'earliestYear' => 'string',
+			'latestYear' => 'string',
+            'scaleMaterialId' => 'int',
+            'scaleText' => 'string',
+            'scaleDescription' => 'string',
+            'bladeDescription' => 'string',
+            'conditionWhenBought' => 'string',
+			'knownCountryMadeIn' => 'string',
+			'guessedCountryMadeIn' => 'string',
+			'imageId' => 'string'
         ]);
         $razor = new Razors;
         $razor->brandId = $request->brandId;
@@ -141,6 +144,7 @@ class RazorsCRUDController extends Controller
         $razor->conditionWhenBought = $request->conditionWhenBought;
         $razor->knownCountryMadeIn = $request->knownCountryMadeIn;
         $razor->guessedCountryMadeIn = $request->guessedCountryMadeIn;
+		$razor->imageId = $request->imageId;
         $razor->save();
         return redirect()->route('razors.index')
             ->with('success', 'Razor Has Been updated successfully');
@@ -156,5 +160,37 @@ class RazorsCRUDController extends Controller
         $razor->delete();
         return redirect()->route('razors.index')
             ->with('success', 'Razor has been deleted successfully');
+    }
+    
+	/**
+	* Upload image.
+	*
+	* @param  \Illuminate\Http\Request  $request
+	* @return \Illuminate\Http\Response
+	*/
+    public function uploadx(Request $request)
+    {
+		$file = $request->file('file');
+		$request->file('file')->store('images', 'public');
+		return redirect()->route('razors')
+		->with('success', 'Razor image has been uploaded successfully');
+    }
+    
+    public function upload(Request $req)
+    {
+		$req->validate([
+			'file' => 'required|mimes:jpg,png|max:40048'
+		]);
+		$fileModel = new File;
+		if ($req->file()) {
+			$fileName = time().'_'.$req->file->getClientOriginalName();
+			$filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+			$fileModel->name = time().'_'.$req->file->getClientOriginalName();
+			$fileModel->file_path = '/storage/' . $filePath;
+			$fileModel->save();
+			return back()
+			->with('success','File has been uploaded.')
+			->with('file', $fileName);
+		}
     }
 }

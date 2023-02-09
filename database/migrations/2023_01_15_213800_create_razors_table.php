@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('conditionWhenBought',255);
             $table->string('knownCountryMadeIn',100);
             $table->string('guessedCountryMadeIn',100);
+			$table->int('imageId',10);
         });
     }
 

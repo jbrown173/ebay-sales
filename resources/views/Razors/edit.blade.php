@@ -28,6 +28,11 @@
         @endif
         <form action="{{ route('razors.update',$razor->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+			@if ($message = Session::get('success'))
+			<div class="alert alert-success">
+				<strong>{{ $message }}</strong>
+			</div>
+			@endif
             @method('PUT')
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -178,9 +183,20 @@
                         @enderror
                     </div>
                 </div>
+				<div class="col-xs-12 col-sm-12 col-md-12">
+					<div class="form-group">
+						<strong>Image File:</strong>
+						<input type="text" name="imagePath" value="{{ $razor->imagePath }}" class="form-control"
+						placeholder="imagePath">
+						@error('imagePath')
+						<div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+						@enderror
+					</div>				
+				</div>
                 <button type="submit" class="btn btn-primary ml-3">Submit</button>
             </div>
         </form>
+		@include('Razors/upload')
     </div>
 </body>
 

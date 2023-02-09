@@ -6,6 +6,7 @@
         <ul class="nav navbar-nav d-flex flex-row">
             <li><a href="/razors">Razors</a></li>
             <li><a href="/ebaylistings">Ebay Listings</a></li>
+            <li><a href="/draftlisting">Draft Listing</a></li>
             <li><a href="/manufacturers">Manufacturers</a></li>
             <li><a href="/brands">Brands</a></li>
             <li><a href="whetstones">Whetstones</a></li>

@@ -25,36 +25,36 @@
 @endif
   <table class="table table-striped">
 <tr>
-<th>Manufacturer</th>
+<th>Manuf.</th>
 <th>Brand</th>
-{{-- <th>Tang Text - Front</th>
-<th>Tang Text - Back</th>
-<th>Blade Text</th> --}}
+<th>Tang Front</th>
+<th>Tang Back</th>
+<th>Blade Text</th>
 <th>Earliest Year</th>
 <th>Latest Year</th>
 <th>Scale Material</th>
 <th>Scale Text</th>
-{{-- <th>Scale Description</th>
-<th>Blade Description</th>
-<th>Condition When Bought</th> --}}
+<th>Scale Descr.</th>
+<th>Blade Descr.</th>
+<th>Cond. Bought</th>
 <th>Known Country</th>
-<th>Possible Country</th>
-<th width="280px">Action</th>
+<th>Poss. Country</th>
+<th>Action</th>
 </tr>
 @foreach ($razors as $razor)
 <tr>
 <td>{{ $razor->manufName }}</td>
 <td>{{ $brand[0]->brandName }}</td>
-{{-- <td>{{ $razor->tangTextFront }}</td>
+<td>{{ $razor->tangTextFront }}</td>
 <td>{{ $razor->tangTextBack }}</td>
-<td>{{ $razor->bladeTextFront }}</td> --}}
+<td>{{ $razor->bladeTextFront }}</td>
 <td>{{ $razor->earliestYear }}</td>
 <td>{{ $razor->latestYear }}</td>
 <td>{{ $scalematerial[0]->scaleMaterial }}</td>
 <td>{{ $razor->scaleText }}</td>
-{{-- <td>{{ $razor->scaleDescription }}</td>
+<td>{{ $razor->scaleDescription }}</td>
 <td>{{ $razor->bladeDescription }}</td>
-<td>{{ $razor->conditionWhenBought }}</td> --}}
+<td>{{ $razor->conditionWhenBought }}</td>
 <td>{{ $razor->knownCountryMadeIn }}</td>
 <td>{{ $razor->guessedCountryMadeIn }}</td>
 <td>

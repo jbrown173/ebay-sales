@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 use App\Models\Razors;
 use Illuminate\Http\Request;
-class EbaylistingsCRUDController extends Controller
+class WorkdoneCRUDController extends Controller
 {
 /**
 * Display a listing of the resource.
