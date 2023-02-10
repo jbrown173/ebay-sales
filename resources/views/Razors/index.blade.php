@@ -44,13 +44,13 @@
 @foreach ($razors as $razor)
 <tr>
 <td>{{ $razor->manufName }}</td>
-<td>{{ $brand[0]->brandName }}</td>
+<td>{{ $razor->brandName }}</td>
 <td>{{ $razor->tangTextFront }}</td>
 <td>{{ $razor->tangTextBack }}</td>
 <td>{{ $razor->bladeTextFront }}</td>
 <td>{{ $razor->earliestYear }}</td>
 <td>{{ $razor->latestYear }}</td>
-<td>{{ $scalematerial[0]->scaleMaterial }}</td>
+<td>{{ $razor->scaleMaterial }}</td>
 <td>{{ $razor->scaleText }}</td>
 <td>{{ $razor->scaleDescription }}</td>
 <td>{{ $razor->bladeDescription }}</td>

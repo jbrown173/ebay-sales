@@ -14,14 +14,12 @@ class EbaylistingsCRUDController extends Controller
      */
     public function index()
     {
+		$data['ebaylistings'] = Ebaylistings::join('razors', 'razorId', '=', 'razors.id')
+		->join('manufacturers', 'razors.manufacturerId', '=', 'manufacturers.id')
+		->join('brands', 'brandId', '=', 'brands.id')	
+		->select('ebaylistings.*', 'manufacturers.name as manufName', 'brands.name as brandName', 'razors.id as razorId')
+		->get();
 
-        $sql = 'SELECT e.*, m.name as manufName, b.name as brandName FROM ebaylistings e ' .
-            'JOIN razors r ON e.razorId = r.id ' .
-            'JOIN manufacturers m ON r.manufacturerId = m.id ' .
-            'JOIN brands b ON r.brandId = b.id;';
-
-        $data['ebaylistings'] = DB::select($sql);
-        //->get();
         return view('ebaylistings.index', $data);
     }
     /**

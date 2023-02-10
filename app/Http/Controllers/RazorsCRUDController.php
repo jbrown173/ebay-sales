@@ -17,14 +17,10 @@ class RazorsCRUDController extends Controller
     public function index()
     {
         $data['razors'] = Razors::join('manufacturers', 'manufacturerId', '=', 'manufacturers.id')
-            //->join(['brands', 'brandId', '=', 'brands.id'])
-            ->get(['razors.*', 'manufacturers.name as manufName']);
-
-        $data['brand'] = Razors::join('brands', 'brandId', '=', 'brands.id')
-            ->get(['brands.name as brandName']);
-
-        $data['scalematerial'] = Razors::join('scalematerial', 'scaleMaterialId', '=', 'scalematerial.id')
-            ->get(['scalematerial.name as scaleMaterial']);
+            ->join('brands', 'brandId', '=', 'brands.id')
+            ->join('scalematerial', 'scaleMaterialId', '=', 'scalematerial.id')
+			->select('razors.*', 'manufacturers.name as manufName', 'brands.name as brandName', 'scalematerial.name as scaleMaterial')
+			->get();
 
         return view('razors.index', $data);
     }
